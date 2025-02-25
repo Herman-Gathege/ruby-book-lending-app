@@ -1,0 +1,5 @@
+<h1>My Borrowed Books</h1>
+<% @borrowed_books.each do |borrowing| %>
+  <p><%= borrowing.book.title %> (Due: <%= borrowing.due_date %>)</p>
+  <%= link_to "Return", return_book_path(borrowing.book), method: :post %>
+<% end %>

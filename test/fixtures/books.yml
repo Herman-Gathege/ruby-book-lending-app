@@ -1,0 +1,11 @@
+one:
+  title: "The Great Gatsby"
+  author: "F. Scott Fitzgerald"
+  isbn: "9780743273565"
+  available: true
+
+two:
+  title: "To Kill a Mockingbird"
+  author: "Harper Lee"
+  isbn: "9780061120084"
+  available: false
