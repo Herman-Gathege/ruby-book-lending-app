@@ -1,19 +1,34 @@
-<h1>Books index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<div class="container mt-4">
+  <h1 class="text-center text-primary">Books Index</h1>
+  <p class="text-muted text-center">Find me in <code>app/views/books/index.html.erb</code></p>
 
-<% if @books.present? %>
-  <ul>
-    <% @books.each do |book| %>
-      <li>
-        <strong>Title:</strong> <%= book.title %><br>
-        <strong>ISBN:</strong> <%= book.isbn %> <!-- Ensure 'isbn' exists in the model -->
-        <strong>Author:</strong> <%= book.author %><br>
-        <strong>Description:</strong> <%= book.description %><br>
-        <strong>Available:</strong> <%= book.available? ? "Yes" : "No" %><br>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No books found.</p>
-  <%= link_to "Add a New Book", new_book_path %>
-<% end %>
+  <% if @books.present? %>
+    <div class="row">
+      <% @books.each do |book| %>
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><strong>Title:</strong> <%= book.title %></h5>
+              <p class="card-text">
+                <strong>ISBN:</strong> <%= book.isbn %> <br>
+                <strong>Author:</strong> <%= book.author %> <br>
+                <strong>Description:</strong> <%= book.description %> <br>
+                <strong>Available:</strong> 
+                <% if book.available? %>
+                  <span class="badge bg-success">Yes</span>
+                <% else %>
+                  <span class="badge bg-danger">No</span>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-center text-danger">No books found.</p>
+    <div class="text-center">
+      <%= link_to "Add a New Book", new_book_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
