@@ -1,14 +1,16 @@
 <div class="container mt-4">
   <h1 class="text-center text-primary">Books Index</h1>
-  <p class="text-muted text-center">Find me in <code>app/views/books/index.html.erb</code></p>
+  <div class="text-center">
+      <%= link_to "Add a New Book", new_book_path, class: "btn btn-primary" %> 
+  </div> <br>
 
   <% if @books.present? %>
-    <div class="row">
+    <div class="row g-4"> <%# Added Bootstrap row spacing %>
       <% @books.each do |book| %>
-        <div class="col-md-6">
-          <div class="card mb-4 shadow-sm">
+        <div class="col-md-6 col-lg-4"> <%# Adjust column for responsiveness %>
+          <div class="card mb-4 shadow-lg"> <%# Improved shadow effect %>
             <div class="card-body">
-              <h5 class="card-title"><strong>Title:</strong> <%= book.title %></h5>
+              <h5 class="card-title text-primary"><strong>Title:</strong> <%= book.title %></h5>
               <p class="card-text">
                 <strong>ISBN:</strong> <%= book.isbn %> <br>
                 <strong>Author:</strong> <%= book.author %> <br>
@@ -20,15 +22,17 @@
                   <span class="badge bg-danger">No</span>
                 <% end %>
               </p>
+              <div class="text-center">
+                <%= link_to "View Details", book_path(book), class: "btn btn-outline-primary btn-sm" %>
+              </div>
             </div>
           </div>
         </div>
+        
       <% end %>
     </div>
   <% else %>
     <p class="text-center text-danger">No books found.</p>
-    <div class="text-center">
-      <%= link_to "Add a New Book", new_book_path, class: "btn btn-primary" %>
-    </div>
+    
   <% end %>
 </div>
