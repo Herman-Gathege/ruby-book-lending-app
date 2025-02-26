@@ -1,3 +1,5 @@
+
+
 <div class="container mt-4">
   <h1 class="text-center text-primary">Books Index</h1>
   <div class="text-center">
@@ -5,10 +7,10 @@
   </div> <br>
 
   <% if @books.present? %>
-    <div class="row g-4"> <%# Added Bootstrap row spacing %>
+    <div class="row g-4">
       <% @books.each do |book| %>
-        <div class="col-md-6 col-lg-4"> <%# Adjust column for responsiveness %>
-          <div class="card mb-4 shadow-lg"> <%# Improved shadow effect %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card mb-4 shadow-lg">
             <div class="card-body">
               <h5 class="card-title text-primary"><strong>Title:</strong> <%= book.title %></h5>
               <p class="card-text">
@@ -24,15 +26,20 @@
               </p>
               <div class="text-center">
                 <%= link_to "View Details", book_path(book), class: "btn btn-outline-primary btn-sm" %>
+
+                <% if book.available? %>
+  <%= button_to "Borrow", borrow_book_path(book), method: :post, class: "btn btn-success" %>
+<% else %>
+  <%= button_to "Return", return_book_path(book), method: :patch, class: "btn btn-warning" %>
+<% end %>
+
               </div>
             </div>
           </div>
         </div>
-        
       <% end %>
     </div>
   <% else %>
     <p class="text-center text-danger">No books found.</p>
-    
   <% end %>
 </div>
