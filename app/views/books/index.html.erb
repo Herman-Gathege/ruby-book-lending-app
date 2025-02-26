@@ -28,10 +28,10 @@
                 <%= link_to "View Details", book_path(book), class: "btn btn-outline-primary btn-sm" %>
 
                 <% if book.available? %>
-  <%= button_to "Borrow", borrow_book_path(book), method: :post, class: "btn btn-success" %>
-<% else %>
-  <%= button_to "Return", return_book_path(book), method: :patch, class: "btn btn-warning" %>
-<% end %>
+                  <%= button_to "Borrow", borrow_book_path(book), method: :post, class: "btn btn-success" %>
+                <% else %>
+                  <%= button_to "Return", return_book_path(book), method: :patch, class: "btn btn-warning" %>
+                <% end %>
 
               </div>
             </div>
